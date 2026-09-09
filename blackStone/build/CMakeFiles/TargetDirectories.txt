@@ -1,0 +1,2 @@
+C:/Users/USER/Desktop/byCompany/blackStone/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/USER/Desktop/byCompany/blackStone/build/CMakeFiles/ZERO_CHECK.dir

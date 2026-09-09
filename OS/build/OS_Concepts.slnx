@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="01_pointers.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="07ef3b91-3297-3288-8d86-95135ec13763">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="02_race_and_mutex.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c77ce5b9-e1b5-30bd-810b-8921b4993e97">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="02_stack_heap_raii.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="484b7a1a-2570-3ba8-8cf9-e5bfde5c533b">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="03_condition_variable.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7ea4ed59-b21c-3943-941d-355ba6e467fd">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="03_copy_move.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="25c3d5b4-927b-3542-a058-2a45bb4232c1">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="04_atomic.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="419b6ca8-914f-3fca-875f-3f94767e6d8f">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="04_thread_basics.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f80926b3-d997-3052-93ac-a3f514403a0c">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="05_race_and_mutex.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="df5deff7-4279-3d22-8c9f-aab97ab78760">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="05_thread_safe_order_book.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c49e66e3-14ef-38a3-a46f-6567d0f60571">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="06_deadlocks.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fa1a1cf6-889f-3d65-9fb4-17c1bcdf1ff5">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="08_atomic_and_memory_order.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="816793d8-04e7-392d-8cdd-016654488f96">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="09_shared_mutex.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="6695b2b4-9a26-3dd7-960e-7dd0bf0a7e7b">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="10_futures.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fe483207-8766-36b7-a9f5-6de052df640c">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="11_thread_pool.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8441c79b-ecc5-3a26-9241-021891b08ee9">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="12_thread_safe_order_book.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="e455efad-6220-37be-ac08-debfc80f9022">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0dd0ad4b-f96a-38b7-8f0d-f60c5be8470b" DefaultStartup="true">
+		<BuildDependency Project="01_pointers.vcxproj"/>
+		<BuildDependency Project="02_race_and_mutex.vcxproj"/>
+		<BuildDependency Project="02_stack_heap_raii.vcxproj"/>
+		<BuildDependency Project="03_condition_variable.vcxproj"/>
+		<BuildDependency Project="03_copy_move.vcxproj"/>
+		<BuildDependency Project="04_atomic.vcxproj"/>
+		<BuildDependency Project="04_thread_basics.vcxproj"/>
+		<BuildDependency Project="05_race_and_mutex.vcxproj"/>
+		<BuildDependency Project="05_thread_safe_order_book.vcxproj"/>
+		<BuildDependency Project="06_deadlocks.vcxproj"/>
+		<BuildDependency Project="08_atomic_and_memory_order.vcxproj"/>
+		<BuildDependency Project="09_shared_mutex.vcxproj"/>
+		<BuildDependency Project="10_futures.vcxproj"/>
+		<BuildDependency Project="11_thread_pool.vcxproj"/>
+		<BuildDependency Project="12_thread_safe_order_book.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="practice.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="298037c3-7ac7-34eb-a152-8c7a4c0f631a"/>
+	<Project Path="practice.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="02ed1c6c-196b-39f1-834d-6b8f8d348a05">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+</Solution>
