@@ -2,6 +2,7 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <sstream>
 using namespace std;
 
 struct Transaction{
@@ -51,3 +52,52 @@ public:
         return result;
     }
 };
+///////////////////////////////////////////////////////////////////OR///////////////////////////////////////////////////////////////
+vector<string> invalidTransactions(vector<string>& transactions){
+    int n = transactions.size();
+    vector<string> name(n);
+    vector<int> time(n);
+    vector<int> amount(n);
+    vector<string> city(n);
+    //parse every transaction
+    for(int i=0; i<n; i++){
+        stringstream ss(transactions[i]);
+        string timeStr, amountStr;
+        getline(ss, name[i], ',');
+        getline(ss, timeStr, ',');
+        getline(ss, amountStr, ',');
+        getline(ss, city[i], ',');
+        time[i] = stoi(timeStr);
+        amount[i] = stoi(amountStr);
+    }
+    vector<bool> invalid(n, false);
+    for(int i=0; i<n; i++){
+        //RULE1: Amount too large
+        if(amount[i] > 1000){
+            invalid[i] = true;
+        }
+        //RULE2: Same name, different city, within 60 minutes
+        for(int j=0; j<n; j++){
+            if(i == j) continue; //skip self
+
+            bool sameName = name[i] == name[j];
+            bool differentCity = city[i] != city[j];
+            bool within60Minutes = abs(time[i] - time[j]) <= 60;
+
+            if(sameName && differentCity && within60Minutes){
+                invalid[i] = true;
+                break; //one match is enough to mark this transaction invalid, no need to check further
+            }
+        }
+    }
+    //build the final result from the marked invalid indices
+    vector<string> result;
+    for(int i=0; i<n; i++){
+        if(invalid[i]){
+            result.push_back(transactions[i]);
+        }
+    }
+    return result;
+}
+//time: O(n^2)
+//space: O(n)
