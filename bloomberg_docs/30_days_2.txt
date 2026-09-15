@@ -1,0 +1,33 @@
+
+940. Distinct Subsequences II
+56.7%
+Hard
+
+42. Trapping Rain Water
+68.2%
+Hard
+
+62. Unique Paths
+67.3%
+Med.
+
+115. Distinct Subsequences
+54.2%
+Hard
+
+122. Best Time to Buy and Sell Stock II
+71.6%
+Med.
+
+611. Valid Triangle Number
+57.2%
+Med.
+
+987. Vertical Order Traversal of a Binary Tree
+54.7%
+Hard
+
+3414. Maximum Score of Non-overlapping Intervals
+66.1%
+Hard
+

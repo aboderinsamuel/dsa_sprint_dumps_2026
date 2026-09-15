@@ -1,0 +1,335 @@
+Search questions
+
+Frequency
+
+1
+
+
+3 months
+121. Best Time to Buy and Sell Stock
+57.4%
+Easy
+
+11. Container With Most Water
+60.8%
+Med.
+
+42. Trapping Rain Water
+68.2%
+Hard
+
+122. Best Time to Buy and Sell Stock II
+71.6%
+Med.
+
+146. LRU Cache
+48.0%
+Med.
+
+5. Longest Palindromic Substring
+38.7%
+Med.
+
+10. Regular Expression Matching
+31.8%
+Hard
+
+53. Maximum Subarray
+53.9%
+Med.
+
+55. Jump Game
+41.5%
+Med.
+
+70. Climbing Stairs
+54.3%
+Easy
+
+118. Pascal's Triangle
+79.4%
+Easy
+
+200. Number of Islands
+65.1%
+Med.
+
+253. Meeting Rooms II
+52.8%
+Med.
+
+509. Fibonacci Number
+74.6%
+Easy
+
+547. Number of Provinces
+71.1%
+Med.
+
+611. Valid Triangle Number
+57.2%
+Med.
+
+2434. Using a Robot to Print the Lexicographically Smallest String
+62.2%
+Med.
+
+22. Generate Parentheses
+79.2%
+Med.
+
+46. Permutations
+82.3%
+Med.
+
+62. Unique Paths
+67.3%
+Med.
+
+78. Subsets
+82.8%
+Med.
+
+104. Maximum Depth of Binary Tree
+78.6%
+Easy
+
+134. Gas Station
+48.7%
+Med.
+
+179. Largest Number
+43.8%
+Med.
+
+198. House Robber
+53.6%
+Med.
+
+202. Happy Number
+60.3%
+Easy
+
+399. Evaluate Division
+64.6%
+Med.
+
+1510. Stone Game IV
+65.2%
+Hard
+
+3302. Find the Lexicographically Smallest Valid Sequence
+57.4%
+Med.
+
+17. Letter Combinations of a Phone Number
+66.8%
+Med.
+
+39. Combination Sum
+77.1%
+Med.
+
+51. N-Queens
+76.5%
+Hard
+
+90. Subsets II
+62.0%
+Med.
+
+98. Validate Binary Search Tree
+36.3%
+Med.
+
+101. Symmetric Tree
+62.0%
+Easy
+
+115. Distinct Subsequences
+54.2%
+Hard
+
+120. Triangle
+59.9%
+Med.
+
+124. Binary Tree Maximum Path Sum
+42.8%
+Hard
+
+135. Candy
+49.2%
+Hard
+
+213. House Robber II
+45.5%
+Med.
+
+322. Coin Change
+49.1%
+Med.
+
+416. Partition Equal Subset Sum
+50.0%
+Med.
+
+430. Flatten a Multilevel Doubly Linked List
+63.4%
+Med.
+
+455. Assign Cookies
+55.5%
+Easy
+
+543. Diameter of Binary Tree
+66.2%
+Easy
+
+621. Task Scheduler
+63.8%
+Med.
+
+940. Distinct Subsequences II
+56.7%
+Hard
+
+987. Vertical Order Traversal of a Binary Tree
+54.7%
+Hard
+
+1029. Two City Scheduling
+69.0%
+Med.
+
+3336. Find the Number of Subsequences With Equal GCD
+66.3%
+Hard
+
+40. Combination Sum II
+60.1%
+Med.
+
+44. Wildcard Matching
+32.8%
+Hard
+
+79. Word Search
+48.1%
+Med.
+
+94. Binary Tree Inorder Traversal
+80.6%
+Easy
+
+95. Unique Binary Search Trees II
+63.3%
+Med.
+
+103. Binary Tree Zigzag Level Order Traversal
+64.5%
+Med.
+
+117. Populating Next Right Pointers in Each Node II
+58.2%
+Med.
+
+127. Word Ladder
+46.6%
+Hard
+
+131. Palindrome Partitioning
+74.6%
+Med.
+
+210. Course Schedule II
+56.3%
+Med.
+
+230. Kth Smallest Element in a BST
+77.3%
+Med.
+
+287. Find the Duplicate Number
+64.9%
+Med.
+
+297. Serialize and Deserialize Binary Tree
+61.1%
+Hard
+
+314. Binary Tree Vertical Order Traversal
+57.9%
+Med.
+
+334. Increasing Triplet Subsequence
+39.6%
+Med.
+
+409. Longest Palindrome
+56.2%
+Easy
+
+410. Split Array Largest Sum
+61.4%
+Hard
+
+486. Predict the Winner
+60.0%
+Med.
+
+676. Implement Magic Dictionary
+58.2%
+Med.
+
+678. Valid Parenthesis String
+40.5%
+Med.
+
+721. Accounts Merge
+62.0%
+Med.
+
+787. Cheapest Flights Within K Stops
+42.6%
+Med.
+
+942. DI String Match
+81.4%
+Easy
+
+994. Rotting Oranges
+59.4%
+Med.
+
+1091. Shortest Path in Binary Matrix
+52.2%
+Med.
+
+1631. Path With Minimum Effort
+64.0%
+Med.
+
+1838. Frequency of the Most Frequent Element
+45.2%
+Med.
+
+1846. Maximum Element After Decreasing and Rearranging
+69.2%
+Med.
+
+2327. Number of People Aware of a Secret
+60.6%
+Med.
+
+3016. Minimum Number of Pushes to Type Word II
+83.1%
+Med.
+
+3414. Maximum Score of Non-overlapping Intervals
+66.1%
+Hard
+
+3620. Network Recovery Pathways
+50.5%
+Hard
