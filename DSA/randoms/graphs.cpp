@@ -1,6 +1,9 @@
 //leetcode 286 : walls and gates
 #include <vector>
 #include <queue>
+#include <numeric>
+#include <unordered_set>
+#include <unordered_map>
 using namespace std;
 
 class Solution{
@@ -69,5 +72,55 @@ public:
         }
         //condition 2 : the graph must be fully connected
         return visited.size() == n;
+    }
+};
+
+class Solution2{
+private:
+    int find(vector<int>& parent, int x){
+        if(parent[x] == x) return x;
+        return parent[x] = find(parent, parent[x]);
+    }
+public:
+    int countComponents(int n, vector<vector<int>>& edges){
+        vector<int> parent(n);
+        int components = n; // Initially, each node is its own component
+        iota(parent.begin(), parent.end(), 0); // Initialize each node's parent to itself
+        for(int i=0; i<n; i++) parent[i] = i;
+
+        for(auto& edge : edges){
+            int root1 = find(parent, edge[0]);
+            int root2 = find(parent, edge[1]);
+            if(root1 != root2){
+                parent[root1] = root2;
+                components--;
+            }
+        }
+        return components;
+
+        
+    }
+};
+
+class Solution {
+private:
+    int find(vector<int>& parent, int x){
+        if(parent[x] == x) return x;
+        return parent[x] = find(parent, parent[x]);
+    }
+public:
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        int n = edges.size();
+        vector<int> parent(n+1);
+        iota(parent.begin(), parent.end(), 0);
+        for(auto& edge : edges){
+            int rootX = find(parent, edge[0]);
+            int rootY = find(parent, edge[1]);
+            if(rootX == rootY){
+                return edge;
+            }
+            parent[rootX] = rootY;
+        }
+        return {};
     }
 };
