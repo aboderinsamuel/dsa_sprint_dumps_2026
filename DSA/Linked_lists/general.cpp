@@ -224,3 +224,219 @@ public:
 
 
 
+//leetcode 287 Find the Duplicate Number
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums){
+        int slow = nums[0];
+        int fast = nums[0];
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        while(slow != fast);
+        slow = nums[0];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};
+//linked lists cycle
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(!head) return false;
+
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(fast != nullptr && fast->next != nullptr){
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast) return true;
+        }
+        return false;
+    }
+};
+
+// leetcode 143. Reorder List
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast->next && fast->next->next){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* prev = nullptr;
+        ListNode* curr = slow->next;
+        slow->next = nullptr;
+        while(curr){
+            ListNode* nxt = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+        }
+
+        ListNode* first = head;
+        ListNode* second = prev;
+        while(second){
+            ListNode* n1 = first->next;
+            ListNode* n2 = second->next;
+            first->next = second;
+            second->next = n1;
+            first  = n1;
+            second = n2;
+        }
+    }
+};
+//leetcode 19: Remove Nth Node From End of List
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode dummy(0, head);
+        ListNode* fast = &dummy;
+        ListNode* slow = &dummy;
+
+        for(int i=0; i<=n; i++){
+            fast = fast->next;
+        }
+        while(fast){
+            fast = fast->next;
+            slow = slow->next;
+        }
+        slow->next = slow->next->next;
+        return dummy.next;
+    }
+};
+
+//leetcode 138. Copy List with Random Pointer
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if (!head) return nullptr;
+
+        unordered_map<Node*, Node*> copy; // old -> new
+
+        // ★ Pass 1: Clone all nodes and store them in the map
+        for (Node* cur = head; cur; cur = cur->next) {
+            copy[cur] = new Node(cur->val);
+        }
+
+        // ★ Pass 2: Connect the next and random pointers for the clones
+        for (Node* cur = head; cur; cur = cur->next) {
+            copy[cur]->next = copy[cur->next];
+            copy[cur]->random = copy[cur->random];
+        }
+
+        return copy[head];
+    }
+};
+
+
+
+
+
+//TREE
+//LEETCODE 199 : Binary Tree Right Side View
+
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+#include <queue>
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> result;
+        if(!root) return result;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()){
+            int size = q.size();
+            for(int i=0; i<size; i++){
+                TreeNode* node = q.front();
+                q.pop();
+                if(i == size-1) result.push_back(node->val);
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
+            }
+        }
+        return result;
+    }
+};
+
+// You're asked to walk around the outside of the tree in two parts:
+//
+// Stand on the left side of the tree.
+// Record the nodes you can see (the left view).
+// Output them from bottom to top.
+// Then stand on the right side of the tree.
+// Record the nodes you can see (the right view).
+// Output them from top to bottom.
+// Don't repeat the root, since it was already included from the left side.
+//
+// Finally, concatenate the two sequences.
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr){}
+};
+
+class Solution {
+public:
+    vector<int> walkBothSides(TreeNode* root) {
+        if (!root) return {};
+        vector<int> leftView;
+        vector<int> rightView;
+        queue<TreeNode*> q;
+        q.push(root);
+
+        while (!q.empty()) {
+            int levelSize = q.size();
+            for (int i=0; i<levelSize; i++) {
+                TreeNode* curr = q.front();
+                q.pop();
+                if (i == 0) leftView.push_back(curr->val); // First node
+                if (i == levelSize - 1) rightView.push_back(curr->val);
+                if (curr->left) q.push(curr->left);
+                if (curr->right) q.push(curr->right);
+            }
+        }
+        reverse(leftView.begin(), leftView.end()); // Bottom to top for left view
+        for (int i=1; i<rightView.size(); i++) { // Start from 1 to avoid root duplication
+            leftView.push_back(rightView[i]);
+        }
+        return leftView;
+    }
+};
