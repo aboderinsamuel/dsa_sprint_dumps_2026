@@ -246,7 +246,8 @@ Med.
 56.3%
 Med.
 
-230. Kth Smallest Element in a BST
+
+
 77.3%
 Med.
 
