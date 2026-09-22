@@ -4,6 +4,7 @@
 #include <numeric>
 #include <unordered_set>
 #include <unordered_map>
+#include <string>
 using namespace std;
 
 class Solution{
@@ -101,7 +102,7 @@ public:
         
     }
 };
-
+//redundant connection
 class Solution {
 private:
     int find(vector<int>& parent, int x){
@@ -122,5 +123,205 @@ public:
             parent[rootX] = rootY;
         }
         return {};
+    }
+};
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> wordSet(wordList.begin(), wordList.end());
+        queue<string> q;
+        if(!wordSet.count(endWord)) return 0;
+        q.push(beginWord);
+
+        int changes = 1;
+        while(!q.empty()){
+            int size = q.size();
+            for(int i=0; i<size; i++){
+                string word = q.front();
+                q.pop();
+                if(word == endWord) return changes;
+                for(int pos = 0; pos<word.size(); pos++){
+                    char originalChar = word[pos];
+                    for(char c='a'; c<='z'; c++){
+                        if(c == originalChar) continue;
+                        word[pos] = c;
+                        if(wordSet.count(word)){
+                            q.push(word);
+                            wordSet.erase(word);
+                        }
+                    }
+                    word[pos] = originalChar;
+                }
+            }
+            changes++;
+        }
+        return 0;
+    }
+};
+
+//leetcode 126 : word ladder II
+//similar solution to first one above:
+
+class Solution {
+private:
+    void dfs(const string& word,
+             const string& beginWord,
+             unordered_map<string, vector<string>>& parents,
+             vector<string>& path,
+             vector<vector<string>>& result) {
+
+        if (word == beginWord) {
+            result.push_back(vector<string>(path.rbegin(), path.rend()));
+            return;
+        }
+
+        for (const string& parent : parents[word]) {
+            path.push_back(parent);
+            dfs(parent, beginWord, parents, path, result);
+            path.pop_back();
+        }
+    }
+
+public:
+    vector<vector<string>> findLadders(string beginWord,
+                                       string endWord,
+                                       vector<string>& wordList) {
+        unordered_set<string> wordSet(wordList.begin(), wordList.end());
+        vector<vector<string>> result;
+
+        if (!wordSet.count(endWord))
+            return result;
+
+        unordered_map<string, vector<string>> parents;
+
+        queue<string> q;
+        q.push(beginWord);
+
+        unordered_set<string> visited;
+        visited.insert(beginWord);
+
+        bool found = false;
+
+        while (!q.empty() && !found) {
+            int levelSize = q.size();
+            unordered_set<string> levelVisited;
+
+            for (int i = 0; i < levelSize; i++) {
+                string word = q.front();
+                q.pop();
+                string originalWord = word;
+
+                for (int pos = 0; pos < word.size(); pos++) {
+                    char originalChar = word[pos];
+
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        if (c == originalChar) continue;
+                        word[pos] = c;
+
+                        if (!wordSet.count(word)) continue;
+                        if (visited.count(word)) continue;
+
+                        parents[word].push_back(originalWord);   // CHANGED: child -> parent
+
+                        if (!levelVisited.count(word)) {
+                            levelVisited.insert(word);
+                            q.push(word);
+                        }
+
+                        if (word == endWord) found = true;
+                    }
+                    word[pos] = originalChar;
+                }
+            }
+
+            for (const string& w : levelVisited)
+                visited.insert(w);
+        }
+
+        if (!found) return result;
+
+        vector<string> path = {endWord};                 // CHANGED: start at the end
+        dfs(endWord, beginWord, parents, path, result);  // CHANGED: walk backwards
+        return result;
+    }
+};
+
+// Let N = number of words, L = word length, 
+// E = number of edges in the graph, P = number of shortest paths, 
+// S = length of a shortest path.
+// Time: O(N · 26 · L²) for BFS + O(P · S) for DFS
+// Space: O(N · L + E · L + P · S)
+
+//leetcode 778 : swim in rising water
+class Solution {
+public:
+vector<pair<int, int>> directions = {{-1,0}, {1,0}, {0,1}, {0,-1}};
+    int swimInWater(vector<vector<int>>& grid) {
+        int n = grid.size();
+        vector<vector<int>> minTime(n, vector<int>(n, INT_MAX));
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<>> pq;
+        minTime[0][0] = grid[0][0];
+        pq.push({grid[0][0], {0,0}});
+
+        while(!pq.empty()){
+            auto [time, pos] = pq.top();
+            pq.pop();
+
+            int row = pos.first;
+            int col = pos.second;
+            if(row == n-1 && col == n-1) return time;
+            if(time > minTime[row][col]) continue;
+            for(auto [dr, dc] : directions){
+                int nr = row + dr;
+                int nc = col + dc;
+
+                if(nr < 0 || nr >=n || nc < 0 || nc >= n) continue;
+                int newTime = max(time, grid[nr][nc]);
+                if(newTime < minTime[nr][nc]){
+                    minTime[nr][nc] = newTime;
+                    pq.push({newTime, {nr, nc}});
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+//leetcodde 1631 : path with minimum effort
+class Solution {
+public:
+    vector<pair<int, int>> directions = {{0,1},{0,-1},{1,0},{-1,0}};
+    int minimumEffortPath(vector<vector<int>>& heights) {
+        int rows = heights.size();
+        int cols = heights[0].size();
+        vector<vector<int>> effort(rows, vector<int>(cols, INT_MAX));
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+        pq.push({0,0,0});
+        effort[0][0] = 0;
+
+        while(!pq.empty()){
+            auto current = pq.top();
+            pq.pop();
+
+            int currentEffort = current[0];
+            int row = current[1];
+            int col = current[2];
+
+            if(currentEffort > effort[row][col]) continue;
+            if(row == rows - 1 && col == cols-1) return currentEffort;
+            for(auto [dr, dc] : directions){
+                int newRow = row + dr;
+                int newCol = col + dc;
+                if(newCol < 0 || newCol >= cols || newRow < 0 || newRow >= rows) continue;
+                int jump = abs(heights[row][col] - heights[newRow][newCol]) ;
+                int newEffort = max(jump, currentEffort);
+                if(newEffort < effort[newRow][newCol]){
+                    effort[newRow][newCol] = newEffort;
+                    pq.push({newEffort, newRow, newCol});
+                }
+            }
+        }
+        return 0;
+        
     }
 };
