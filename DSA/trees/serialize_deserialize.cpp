@@ -49,23 +49,41 @@ public:
 // TreeNode* ans = deser.deserialize(ser.serialize(root));
 
 //leetcode 105: Construct Binary Tree from Preorder and Inorder Traversal
+class Solution {
+private:
+    unordered_map<int, int> idx; // Stores value -> index mapping of inorder array
+    int preIdx;                  // Tracks current root in preorder array
 
-TreeNode* buildTreeHelper(vector<int>& preorder, vector<int>& inorder){
-    if(preorder.empty() || inorder.empty()) return nullptr;
-    int rootVal = preorder[0];
-    TreeNode* root = new TreeNode(rootVal);
-    int rootIndex = 0;
-    for(int i = 0; i < inorder.size(); i++){
-        if(inorder[i] == rootVal){
-            rootIndex = i;
-            break;
-        }
+    TreeNode* buildHelper(const vector<int>& preorder, int lo, int hi) {
+        if (lo > hi) return nullptr;
+
+        // Pick current root value from preorder and advance the pointer
+        int val = preorder[preIdx++];
+        TreeNode* root = new TreeNode(val);
+
+        // Find the boundary split point using our hash map lookup
+        int mid = idx[val];
+
+        // Recursively build the left and right subtrees
+        root->left = buildHelper(preorder, lo, mid - 1);
+        root->right = buildHelper(preorder, mid + 1, hi);
+
+        return root;
     }
-    vector<int> leftPreorder(preorder.begin() + 1, preorder.begin() + 1 + rootIndex);
-    vector<int> rightPreorder(preorder.begin() + 1 + rootIndex, preorder.end());
-    vector<int> leftInorder(inorder.begin(), inorder.begin() + rootIndex);
-    vector<int> rightInorder(inorder.begin() + 1 + rootIndex, inorder.end());
-    root->left = buildTreeHelper(leftPreorder, leftInorder);
-    root->right = buildTreeHelper(rightPreorder, rightInorder);
-    return root;
-}
+
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        // 1. Reset state (crucial for LeetCode's multi-testcase runner)
+        idx.clear();
+        preIdx = 0;
+
+        // 2. Map all inorder values to their indices for O(1) lookups
+        for (int i = 0; i < inorder.size(); i++) {
+            idx[inorder[i]] = i;
+        }
+
+        // 3. Kick off the recursive tree construction
+        return buildHelper(preorder, 0, inorder.size() - 1);
+    }
+};
+
