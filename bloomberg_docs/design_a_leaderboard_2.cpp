@@ -32,3 +32,10 @@ public:
         scores.erase(playerId);
     }
 };
+//time:
+//addScore : O(1)
+//Reset O(1)
+//Top O(n log k)
+
+//Space:
+//O(n)
